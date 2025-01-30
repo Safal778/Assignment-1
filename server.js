@@ -8,7 +8,7 @@
 *
 * Name: Safal Awal Student ID: 153359229 Date: Jan 17 2025
 *
-* Published URL: ___________________________________________________________
+* Published URL: https://assignment-1-six-beta.vercel.app/
 *
 ********************************************************************************/
 const express = require('express');
@@ -25,7 +25,10 @@ const db = new ListingsDB();
 
 
 app.get("/api/listings", async (req, res) => {
-    let listings =  await db.getAllListings(1, 5);
+    let page = req.query.page || 1
+    let perPage = req.query.perPage || 6
+    let name = req.query.name || null
+    let listings =  await db.getAllListings(page,perPage,name);
     res.send(listings);
 })
 
