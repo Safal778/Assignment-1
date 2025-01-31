@@ -24,6 +24,9 @@ const ListingsDB = require("./modules/listingsDB.js");
 const db = new ListingsDB();
 
 
+app.get("/", async (req,res) =>{
+    res.json({message: 'API Listing'})
+})
 app.get("/api/listings", async (req, res) => {
     let page = req.query.page || 1
     let perPage = req.query.perPage || 6
